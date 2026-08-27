@@ -10,6 +10,17 @@ namespace Ejercicio_Sem_1
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Ingresar la base: ");
+            float base1 = float.Parse(Console.ReadLine());
+
+            Console.WriteLine("Ingresar la altura: ");
+            float altura = float.Parse(Console.ReadLine());
+
+            float area = base1 * altura;
+            float perimetro = 2 * (base1 + altura);
+
+            Console.WriteLine($"Area: {area}");
+            Console.WriteLine($"Perimetro {perimetro}");
         }
     }
 }
