@@ -1,21 +1,15 @@
-﻿using System;
-
-public class Ejercicio2
+﻿internal class Ejercicio2
 {
-    internal class triangulo
+    public static void Ejecutar()
     {
-        private float b;
-        private float h;
+        Console.Write("Ingresar la base: ");
+        float b = float.Parse(Console.ReadLine());
 
-        public triangulo(float b, float h)
-        {
-            this.b = b;
-            this.h = h;
-        }
+        Console.Write("Ingresar la altura: ");
+        float h = float.Parse(Console.ReadLine());
 
-        public float CalcularArea()
-        {
-            return (b * h) / 2;
-        }
+        triangulo t = new triangulo(b, h);
+
+        Console.WriteLine($"Area: {t.CalcularArea()}");
     }
 }
