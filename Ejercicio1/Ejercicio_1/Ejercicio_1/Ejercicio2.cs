@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace Ejercicio_1
 {
-    internal class triangulo
+    internal class Ejercicio2
     {
-        private float b;
-        private float h;
-
-        public triangulo(float b, float h)
+        public static void Ejecutar()
         {
-            this.b = b;
-            this.h = h;
-        }
+            Console.Write("Ingrese la base: ");
+            double baseTriangulo = double.Parse(Console.ReadLine());
 
-        public float CalcularArea()
-        {
-            return (b * h) / 2;
+            Console.Write("Ingrese la altura: ");
+            double altura = double.Parse(Console.ReadLine());
+
+            double area = (baseTriangulo * altura) / 2;
+
+            Console.WriteLine("Área: " + area);
         }
     }
 }
