@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Ejercicio_Sem_1
+namespace Ejercicio_1
 {
-    internal class Program
+    internal class Ejercicio1
     {
-        static void Main(string[] args)
+        public static void Ejecutar()
         {
             Console.WriteLine("Ingresar la base: ");
             float base1 = float.Parse(Console.ReadLine());
