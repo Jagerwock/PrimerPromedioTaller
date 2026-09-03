@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Ejercicio5
+    internal class Ejercicio5 : Ejercicio1
     {
+        private int b;
+        private int h;
+
+        public Triangulo(int b, int h) : base("Triangulo")
+        {
+            this.b = b;
+            this.h = h;
+        }
+
+        public override float CalcularArea()
+        {
+            return (b * h) / 2f;
+        }
     }
 }
