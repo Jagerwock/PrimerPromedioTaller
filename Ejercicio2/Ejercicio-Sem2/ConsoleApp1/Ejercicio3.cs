@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
         private int Lado1;
         private int Lado2;
-        public Cuadrado (int L1, int L2)
+        public Cuadrado (int L1, int L2) : base("Cuadrado")
         {
             this.Lado1 = L1;
             this.Lado2 = L2;
