@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Ejercicio1
+    internal class Figura
     {
+        public string Nombre { get; set; }
 
-        public virtual float GetArea()
+        public Figura(string nombre)
+        {
+            Nombre = nombre;
+        }
+
+        public virtual double CalcularArea()
         {
             return 0;
         }
