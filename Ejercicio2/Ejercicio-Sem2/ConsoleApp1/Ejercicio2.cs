@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Ejercicio2 : Ejercicio1
+    internal class Ejercicio2 : Figura
     {
         public int Base;
         public int Altura;
