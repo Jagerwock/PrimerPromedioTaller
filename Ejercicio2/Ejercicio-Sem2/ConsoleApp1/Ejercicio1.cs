@@ -8,5 +8,10 @@ namespace ConsoleApp1
 {
     internal class Ejercicio1
     {
+
+        public virtual float GetArea()
+        {
+            return 0;
+        }
     }
 }
