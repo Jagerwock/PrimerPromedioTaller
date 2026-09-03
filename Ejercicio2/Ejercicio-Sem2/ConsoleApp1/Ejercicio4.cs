@@ -9,9 +9,9 @@ namespace ConsoleApp1
     internal class Circulo : Figura 
     {
         private double radio;
-        public Circulo(double radio) 
+        public Circulo(double radio) : base("Circulo")
         {
-            Nombre = "Circulo";
+            
             this.radio = radio;
         }
 
