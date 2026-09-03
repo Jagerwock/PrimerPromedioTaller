@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Ejercicio2
+    internal class Ejercicio2 : Ejercicio1
     {
+        public int Base;
+        public int Altura;
+
+        public Rectangulo(int b, int h) : base("Rectangulo")
+        {
+            Base = b;
+            Altura = h;
+        }
+
+        public override int Area()
+        {
+            return Base * Altura;
+        }
     }
 }
