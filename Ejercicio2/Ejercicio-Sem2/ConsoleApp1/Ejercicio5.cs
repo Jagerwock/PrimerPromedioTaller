@@ -17,9 +17,9 @@ namespace ConsoleApp1
             this.h = h;
         }
 
-        public override float CalcularArea()
+        public override double CalcularArea()
         {
-            return (b * h) / 2f;
+            return (b * h) / 2.0;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            Ejercicio6 ejercicio6 = new Ejercicio6();
+            ejercicio6.Ejecutar();
         }
     }
 }
