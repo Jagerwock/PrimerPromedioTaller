@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Ejercicio3 : Ejercicio2
+    internal class Cuadrado : Rectangulo
     {
-        private int Lado1;
-        private int Lado2;
-        public Cuadrado (int L1, int L2) : base("Cuadrado")
+        private int lado;
+
+        public Cuadrado(int lado) : base(lado, lado)
         {
-            this.Lado1 = L1;
-            this.Lado2 = L2;
+            Nombre = "Cuadrado";
+            this.lado = lado;
         }
-        public override float CalcularArea()
+
+        public override double CalcularArea()
         {
-            return L1 * L2;
+            return lado * lado;
         }
     }
 }

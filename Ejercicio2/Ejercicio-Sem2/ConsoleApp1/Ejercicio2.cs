@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Ejercicio2 : Figura
+    internal class Rectangulo : Figura
     {
         public int Base;
         public int Altura;
@@ -17,7 +17,7 @@ namespace ConsoleApp1
             Altura = h;
         }
 
-        public override int Area()
+        public override double CalcularArea()
         {
             return Base * Altura;
         }
