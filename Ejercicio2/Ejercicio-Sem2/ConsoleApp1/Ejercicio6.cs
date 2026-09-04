@@ -17,11 +17,11 @@ namespace ConsoleApp1
             while (opcion != 6)
             {
                 Console.WriteLine();
-                Console.WriteLine("1. Agregar Rectangulo");
-                Console.WriteLine("2. Agregar Cuadrado");
-                Console.WriteLine("3. Agregar Circulo");
-                Console.WriteLine("4. Agregar Triangulo");
-                Console.WriteLine("5. Ver Figuras");
+                Console.WriteLine("1. Rectangulo");
+                Console.WriteLine("2. Cuadrado");
+                Console.WriteLine("3. Circulo");
+                Console.WriteLine("4. Triangulo");
+                Console.WriteLine("5. Ver todas las figuras");
                 Console.WriteLine("6. Salir");
                 Console.Write("Seleccione una opcion: ");
 
@@ -37,6 +37,8 @@ namespace ConsoleApp1
 
                     Rectangulo rectangulo = new Rectangulo(b, h);
                     figuras.Add(rectangulo);
+
+                    Console.WriteLine("Area del Rectangulo: " + rectangulo.CalcularArea());
                 }
                 else if (opcion == 2)
                 {
@@ -45,6 +47,8 @@ namespace ConsoleApp1
 
                     Cuadrado cuadrado = new Cuadrado(lado);
                     figuras.Add(cuadrado);
+
+                    Console.WriteLine("Area del Cuadrado: " + cuadrado.CalcularArea());
                 }
                 else if (opcion == 3)
                 {
@@ -53,6 +57,8 @@ namespace ConsoleApp1
 
                     Circulo circulo = new Circulo(radio);
                     figuras.Add(circulo);
+
+                    Console.WriteLine("Area del Circulo: " + circulo.CalcularArea());
                 }
                 else if (opcion == 4)
                 {
@@ -64,16 +70,17 @@ namespace ConsoleApp1
 
                     Triangulo triangulo = new Triangulo(b, h);
                     figuras.Add(triangulo);
+
+                    Console.WriteLine("Area del Triangulo: " + triangulo.CalcularArea());
                 }
                 else if (opcion == 5)
                 {
                     Console.WriteLine();
+                    Console.WriteLine("Figuras guardadas:");
 
                     foreach (Figura figura in figuras)
                     {
-                        Console.WriteLine("Figura: " + figura.Nombre);
-                        Console.WriteLine("Area: " + figura.CalcularArea());
-                        Console.WriteLine();
+                        Console.WriteLine(figura.Nombre + " - Area: " + figura.CalcularArea());
                     }
                 }
                 else if (opcion == 6)
