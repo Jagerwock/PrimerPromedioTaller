@@ -1,67 +1,118 @@
 using System;
 using UnityEngine;
 
-internal class Juego : MonoBehaviour
+public class Juego : MonoBehaviour
 {
-    public string playername;
-    public string name1;
-    public int lifePlayer;
-    public bool TheGameIsOver = true;
-    public int option;
-    public void Execute()
+    [Header("Jugador")]
+    [SerializeField] private int vidaJugador = 100;
+    [SerializeField] private int dañoJugador = 25;
+
+    [Header("Enemigos")]
+    [SerializeField] private EnemyMelee enemigoMelee;
+    [SerializeField] private EnemyRango enemigoRango;
+    [SerializeField] private int enemigoSeleccionado;
+
+    private Jugador jugador;
+    private EnemyParent[] enemigos;
+    private int turnoEnemigo;
+    private bool juegoTerminado;
+
+    private void Start()
     {
-        RunGame();
+        jugador = new Jugador(vidaJugador, dañoJugador);
+        enemigos = new EnemyParent[] { enemigoMelee, enemigoRango };
+        Debug.Log($"Comienza el juego. Vida: {jugador.ObtenerVida()}, daño: {jugador.ObtenerDaño()}");
     }
-    private void RunGame()
+
+    [ContextMenu("Atacar enemigo seleccionado")]
+    public void AtacarEnemigoSeleccionado()
     {
-        if (TheGameIsOver == true)
+        if (juegoTerminado)
+            return;
+
+        if (enemigoSeleccionado < 0 || enemigoSeleccionado >= enemigos.Length)
         {
-            Final();
+            Debug.Log("Elige el enemigo 0 (melee) o 1 (rango).");
+            return;
+        }
+
+        EnemyParent enemigo = enemigos[enemigoSeleccionado];
+        if (enemigo == null)
+        {
+            Debug.Log("Falta asignar el enemigo en el Inspector.");
+            return;
+        }
+
+        if (!enemigo.EstaVivo())
+        {
+            Debug.Log("Ese enemigo ya está muerto. Elige otro.");
+            return;
+        }
+
+        enemigo.RecibirDaño(jugador.ObtenerDaño());
+
+        if (TodosLosEnemigosMuertos())
+        {
+            juegoTerminado = true;
+            Debug.Log("Victoria: todos los enemigos fueron derrotados.");
+            return;
+        }
+
+        TurnoDelEnemigo();
+    }
+
+    private void TurnoDelEnemigo()
+    {
+        EnemyParent enemigo = BuscarSiguienteEnemigoVivo();
+        if (enemigo == null)
+            return;
+
+        int daño = enemigo.ObtenerDaño();
+
+        if (enemigo is EnemyRango enemigoQueDispara)
+        {
+            daño = enemigoQueDispara.Atacar();
+            if (daño == 0)
+                Debug.Log($"{enemigo.name} no tiene balas y pierde su turno.");
+            else
+                Debug.Log($"{enemigo.name} dispara. Balas restantes: {enemigoQueDispara.ObtenerBalas()}");
+        }
+
+        if (daño > 0)
+            jugador.RecibirDaño(daño);
+
+        if (!jugador.EstaVivo())
+        {
+            juegoTerminado = true;
+            Debug.Log("Derrota: el jugador se quedó sin vida.");
         }
     }
-    public void Run()
+
+    private EnemyParent BuscarSiguienteEnemigoVivo()
     {
-        Console.WriteLine("Introdusca su nombre:");
-        playername = Console.ReadLine();
-        name1 = playername;
-        lifePlayer = 3;
-        Console.WriteLine($"Su nombre es {name1} y su cantidad de vida es {lifePlayer}");
-        if (lifePlayer == 0)
+        for (int i = 0; i < enemigos.Length; i++)
         {
-            Retry();
+            int posicion = (turnoEnemigo + i) % enemigos.Length;
+            EnemyParent enemigo = enemigos[posicion];
+
+            if (enemigo != null && enemigo.EstaVivo())
+            {
+                turnoEnemigo = (posicion + 1) % enemigos.Length;
+                return enemigo;
+            }
         }
+
+        return null;
     }
-    private void Retry()
+
+    private bool TodosLosEnemigosMuertos()
     {
-        Console.WriteLine("Desea volver a intentar? 1=si 2=no");
-        option = Convert.ToInt32(Console.ReadLine());
-        if (option == 1)
+        foreach (EnemyParent enemigo in enemigos)
         {
-            TheGameIsOver = true;
-            lifePlayer = 3;
-            RunGame();
+            if (enemigo != null && enemigo.EstaVivo())
+                return false;
         }
-        else
-        {
-            TheGameIsOver = false;
-            Environment.Exit(0);
-        }
-    }
-    public void Final()
-    {
-        Console.WriteLine("El juego ha terminado");
-        Console.WriteLine("Desea volver a intentar? 1=si 2=no");
-        option = Convert.ToInt32(Console.ReadLine());
-        if (option == 1)
-        {
-            TheGameIsOver = true;
-            lifePlayer = 3;
-            RunGame();
-        }
-        else
-        {
-            TheGameIsOver = false;
-            Environment.Exit(0);
-        }
+
+        return true;
     }
 }

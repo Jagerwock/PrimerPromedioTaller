@@ -7,8 +7,8 @@ public class Jugador
 
     public Jugador(int vidaInicial, int dañoInicial)
     {
-        vida = vidaInicial;
-        daño = dañoInicial;
+        vida = Mathf.Clamp(vidaInicial, 0, 100);
+        daño = Mathf.Clamp(dañoInicial, 0, 100);
     }
 
     public void RecibirDaño(int cantidad)
@@ -28,5 +28,10 @@ public class Jugador
     public int ObtenerVida()
     {
         return vida;
+    }
+
+    public bool EstaVivo()
+    {
+        return vida > 0;
     }
 }
