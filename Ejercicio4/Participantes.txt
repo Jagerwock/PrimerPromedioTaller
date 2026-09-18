@@ -1,0 +1,5 @@
+Andre - Clase Jugador
+Isma - Padre de enemigo y Enemigo Melee
+Axel - Enemigo Rango
+Gianmarco - Clase Juego
+Flavio y Valentina - El desarrollo
