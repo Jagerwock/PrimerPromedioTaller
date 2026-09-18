@@ -115,4 +115,16 @@ public class Juego : MonoBehaviour
 
         return true;
     }
+
+    public void AtacarMelee()
+    {
+        enemigoSeleccionado = 0;
+        AtacarEnemigoSeleccionado();
+    }
+
+    public void AtacarRango()
+    {
+        enemigoSeleccionado = 1;
+        AtacarEnemigoSeleccionado();
+    }
 }
