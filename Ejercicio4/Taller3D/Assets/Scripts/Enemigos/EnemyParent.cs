@@ -5,9 +5,9 @@ public class EnemyParent : MonoBehaviour
     public int enemyHealth;
     public int enemyDamage;
     
-    public void Start()
-    {
+    //public void Start()
+    //{
         //texto de funcionamiento acia
-    }
+    //}
 
 }

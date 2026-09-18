@@ -7,12 +7,12 @@ public class EnemyMelee : EnemyParent
     [SerializeField] private int startingMeleeDMG;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private void Start ()
+    public void Start()
     {
         enemyHealth = startingMeleeHP;
         enemyDamage = startingMeleeDMG;
     }
-    public void RecibirDaño(int cantidad)
+    public void RecieveDMG(int cantidad)
     {
         enemyHealth -= cantidad;
         if (enemyHealth < 0)
@@ -28,6 +28,6 @@ public class EnemyMelee : EnemyParent
 
     public bool VivoMuerto()
     {
-        return enemyDamage > 0;
+        return enemyHealth > 0;
     }
 }
