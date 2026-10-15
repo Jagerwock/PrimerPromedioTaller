@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 4862d4d425f459c40a2ed0240522c74c
+  productGUID: ce5c3d372e48fc54283b3a5de72549e5
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Taller-sem8
+  productName: Taller-Sem8
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -114,7 +114,6 @@ PlayerSettings:
   xboxEnableGuest: 0
   xboxEnablePIXSampling: 0
   metalFramebufferOnly: 0
-  metalUseMetalDisplayLink: 0
   xboxOneResolution: 0
   xboxOneSResolution: 0
   xboxOneXResolution: 3
@@ -847,14 +846,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Taller-sem8
+  metroPackageName: Taller-Sem8
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Taller-sem8
+  metroApplicationDescription: Taller-Sem8
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -925,10 +924,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 318a892f-b1cb-4a1a-9dc9-39fb990292e1
+  cloudProjectId: bec7cfb5-ee46-4fef-920d-ed8fcbb5440e
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Taller-sem8
+  projectName: Taller-Sem8
   organizationId: auzlost_unity
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
