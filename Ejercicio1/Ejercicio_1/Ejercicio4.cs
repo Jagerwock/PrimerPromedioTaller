@@ -4,15 +4,14 @@ namespace Ejercicio_1
 {
     internal class Ejercicio4
     {
-        {
     public static void Ejecutar()
         {
             string continuar;
             {
-                Console.Write("Ingrese el primer número: ")
+                Console.Write("Ingrese el primer número: ");
                 double num1 = double.Parse(Console.ReadLine());
 
-                Console.Write("Ingrese el segundo número: ")
+                Console.Write("Ingrese el segundo número: ");
                 double num2 = double.Parse(Console.ReadLine());
 
                 Console.Write("Ingrese el tipo de operación (+, -, *, /, %): ");
