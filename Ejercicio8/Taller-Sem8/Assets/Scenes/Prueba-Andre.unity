@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletWeapon
   firePoint: {fileID: 1512117936}
-  fireRate: 0.25
+  fireRate: 0.5
   damage: 10
   WeaponName: Pistola
   bulletPrefab: {fileID: 3597256779240108659, guid: a549b2218dcb1e64c8169fba760a53c1, type: 3}
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrenadeLauncherWeapon
   firePoint: {fileID: 1036357392}
-  fireRate: 0.25
+  fireRate: 1
   damage: 10
   WeaponName: LanzaGranadas
   grenadePrefab: {fileID: 6340088767976263674, guid: a73b148d2c5f1d44b97d855adb7869ce, type: 3}
@@ -1510,7 +1510,7 @@ MonoBehaviour:
   fireRate: 0.25
   damage: 10
   WeaponName: PistolaLaser
-  range: 30
+  range: 15
   beamDuration: 0.05
   hitMask:
     serializedVersion: 2
@@ -1588,7 +1588,7 @@ LineRenderer:
     colorGradient:
       serializedVersion: 2
       key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
