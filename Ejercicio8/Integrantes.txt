@@ -1,0 +1,5 @@
+Axel - 2 Enemigos distintos, navmesh
+Andre - Jugador completo, 3 diferentes tipos de disparos
+Valentina - Niveles, probuilder
+Isma - Jefe, ataques distintos mayor resistencia
+Flavio - Todo el UI
