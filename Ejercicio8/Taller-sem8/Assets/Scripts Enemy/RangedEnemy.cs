@@ -1,16 +1,35 @@
+
 using UnityEngine;
 
-public class RangedEnemy : MonoBehaviour
+public class RangedEnemy : EnemyBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
 
-    // Update is called once per frame
-    void Update()
+    protected override void Attack()
     {
-        
+        if (Player == null || projectilePrefab == null || firePoint == null)
+        {
+            return;
+        }
+
+        Vector3 direction = Player.position - firePoint.position;
+        direction.y = 0f;
+
+        firePoint.rotation = Quaternion.LookRotation(direction);
+
+        GameObject projectile = Instantiate(projectilePrefab,firePoint.position,firePoint.rotation);
+
+        EnemyProjectile bullet =projectile.GetComponent<EnemyProjectile>();
+
+        if (bullet != null)
+        {
+            bullet.Initialize(Damage);
+        }
+        else
+        {
+            Destroy(projectile);
+        }
     }
 }
+
