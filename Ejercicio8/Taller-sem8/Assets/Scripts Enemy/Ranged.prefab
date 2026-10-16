@@ -186,6 +186,6 @@ MonoBehaviour:
   damage: 10
   attackRange: 10
   attackCooldown: 1
-  player: {fileID: 0}
+  player: {fileID: 9080400911677201186, guid: 37a866e5a442d2e4786c35a27913253c, type: 3}
   projectilePrefab: {fileID: 1765054089806579411, guid: a1c50b5b2685dbc4494c58b911ae8668, type: 3}
   firePoint: {fileID: 3469494460018484964}

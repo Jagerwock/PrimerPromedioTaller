@@ -154,4 +154,4 @@ MonoBehaviour:
   damage: 10
   attackRange: 2
   attackCooldown: 1
-  player: {fileID: 0}
+  player: {fileID: 9080400911677201186, guid: 37a866e5a442d2e4786c35a27913253c, type: 3}
