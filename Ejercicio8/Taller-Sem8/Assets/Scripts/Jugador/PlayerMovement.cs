@@ -3,7 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movimiento")]
     [SerializeField] private float moveSpeed = 6f;
+
+    [Header("Salto")]
+    [SerializeField] private float jumpHeight = 1.5f;
+    [SerializeField] private KeyCode jumpKey = KeyCode.Space;
 
     private CharacterController controller;
     private Camera cam;
@@ -25,7 +30,13 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")).normalized;
 
-        if (controller.isGrounded && verticalVelocity < 0f) verticalVelocity = -2f;
+        bool grounded = controller.isGrounded;
+
+        if (grounded && verticalVelocity < 0f) verticalVelocity = -2f;
+
+        if (grounded && Input.GetKeyDown(jumpKey))
+            verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y);
+
         verticalVelocity += Physics.gravity.y * Time.deltaTime;
 
         Vector3 velocity = input * moveSpeed;
