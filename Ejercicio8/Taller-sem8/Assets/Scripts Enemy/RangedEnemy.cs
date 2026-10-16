@@ -14,6 +14,7 @@ public class RangedEnemy : EnemyBase
         }
 
         Vector3 direction = Player.position - firePoint.position;
+
         direction.y = 0f;
 
         firePoint.rotation = Quaternion.LookRotation(direction);
