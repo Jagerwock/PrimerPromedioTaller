@@ -10,7 +10,7 @@ public class BossFlunkies : MonoBehaviour
     {
         for (int i = 0; i < bossAds.Count; i++)
         {
-            GameObject clone = Instantiate(bossAds[i], transform.position - transform.right * (i * 6f), transform.rotation);
+            GameObject clone = Instantiate(bossAds[i], transform.position - transform.forward * (i * 6f), transform.rotation);
         }
     }
 
