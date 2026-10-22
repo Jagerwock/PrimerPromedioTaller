@@ -25,7 +25,7 @@ public class RangedEnemy : EnemyBase
 
         if (bullet != null)
         {
-            bullet.Initialize(Damage);
+            bullet.Initialize(Damage, this);
         }
         else
         {

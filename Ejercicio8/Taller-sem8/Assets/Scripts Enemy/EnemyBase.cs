@@ -1,8 +1,7 @@
-
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class EnemyBase : MonoBehaviour
+public abstract class EnemyBase : Health
 {
     [SerializeField] private int health = 100;
     [SerializeField] private int damage = 10;
@@ -12,19 +11,37 @@ public abstract class EnemyBase : MonoBehaviour
 
     private NavMeshAgent agent;
     private float nextAttackTime;
-    private bool isDead;
+    private PlayerHealth playerHealth;
 
     protected Transform Player => player;
     protected int Damage => damage;
+    protected virtual float AttackCooldown => attackCooldown;
+    protected virtual float InitialAttackDelay => 0f;
 
-    private void Awake()
+    protected override void Awake()
     {
+        maxHealth = health;
+        base.Awake();
         agent = GetComponent<NavMeshAgent>();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+        if (player == null || !player.gameObject.scene.IsValid())
+        {
+            PlayerHealth target = FindFirstObjectByType<PlayerHealth>();
+            if (target != null) player = target.transform;
+        }
+
+        if (player != null) playerHealth = player.GetComponent<PlayerHealth>();
+        nextAttackTime = Time.time + InitialAttackDelay;
     }
 
     protected virtual void Update()
     {
-        if (isDead || player == null || agent == null)
+        if (IsDead || player == null || playerHealth == null || playerHealth.IsDead
+            || Time.timeScale <= 0f || agent == null || !agent.enabled || !agent.isOnNavMesh)
         {
             return;
         }
@@ -43,7 +60,7 @@ public abstract class EnemyBase : MonoBehaviour
             if (Time.time >= nextAttackTime)
             {
                 Attack();
-                nextAttackTime = Time.time + attackCooldown;
+                nextAttackTime = Time.time + AttackCooldown;
             }
         }
     }
@@ -52,23 +69,14 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (isDead || amount <= 0)
-        {
-            return;
-        }
+        if (amount > 0) base.TakeDamage(amount);
+    }
 
-        health -= amount;
-
-        if (health <= 0)
-        {
-            isDead = true;
-
-            if (agent != null)
-            {
-                agent.isStopped = true;
-            }
-
-            Destroy(gameObject);
-        }
+    protected override void Die()
+    {
+        enabled = false;
+        StopAllCoroutines();
+        if (agent != null && agent.enabled && agent.isOnNavMesh) agent.isStopped = true;
+        base.Die();
     }
 }
