@@ -2372,7 +2372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1cda051dfd0714396d249d5d8cf8be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 10
+  moveSpeed: 7.5
   gravity: -20
   stickToGroundForce: -2
 --- !u!143 &1063446115
@@ -5920,7 +5920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329687c51279c1a4380736bdefe1a2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraLook
-  playerBody: {fileID: 1576211811}
+  playerBody: {fileID: 1063446116}
   mouseSensitivity: 400
   minVerticalAngle: -80
   maxVerticalAngle: 80

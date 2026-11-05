@@ -18,14 +18,27 @@ public class CameraLook : MonoBehaviour
 
     private void Reset()
     {
+        FindPlayerBody();
+    }
 
-        if (playerBody == null && transform.parent != null)
+    private void Awake()
+    {
+        FindPlayerBody();
+    }
+
+    private void FindPlayerBody()
+    {
+        PlayerController controller = GetComponentInParent<PlayerController>();
+
+        if (controller != null)
+            playerBody = controller.transform;
+        else if (playerBody == null && transform.parent != null)
             playerBody = transform.parent;
     }
 
     private void Update()
     {
-        if (!CanLook)
+        if (!CanLook || playerBody == null)
             return;
 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
