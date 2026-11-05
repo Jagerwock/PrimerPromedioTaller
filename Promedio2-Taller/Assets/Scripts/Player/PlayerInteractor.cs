@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class PlayerInteractor : MonoBehaviour
@@ -8,14 +7,11 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private LayerMask interactMask = ~0;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
 
-    [Header("UI")]
-    [SerializeField] private TMP_Text promptText;
-
     [Header("Referencias")]
     [SerializeField] private PlayerController player;
     [SerializeField] private CameraLook cameraLook;
 
-    private Interactable _current;
+    private GameObject avisoVisible;
 
     public bool InputLocked { get; private set; }
 
@@ -23,31 +19,19 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (player == null) player = GetComponentInParent<PlayerController>();
         if (cameraLook == null) cameraLook = GetComponent<CameraLook>();
-        SetPrompt("");
     }
 
     private void Update()
     {
-        if (InputLocked)
-        {
-            _current = null;
-            SetPrompt("");
+        Interactable objetivo = InputLocked ? null : FindInteractable();
+        MostrarAviso(objetivo != null ? objetivo.Aviso : null);
+        if (objetivo == null)
             return;
-        }
 
-        _current = FindInteractable();
-
-        if (_current != null)
-        {
-            SetPrompt(_current.Prompt);
-
-            if (Input.GetKeyDown(interactKey))
-                _current.Interact(this);
-        }
-        else
-        {
-            SetPrompt("");
-        }
+        if (Input.GetKeyDown(interactKey))
+            objetivo.Interact(this);
+        else if (Input.GetKeyDown(KeyCode.R))
+            objetivo.InteractAlternate(this);
     }
 
     private Interactable FindInteractable()
@@ -78,9 +62,16 @@ public class PlayerInteractor : MonoBehaviour
         }
     }
 
-    private void SetPrompt(string text)
+    private void MostrarAviso(GameObject aviso)
     {
-        if (promptText != null)
-            promptText.text = text;
+        if (aviso == avisoVisible)
+            return;
+
+        if (avisoVisible != null)
+            avisoVisible.SetActive(false);
+
+        avisoVisible = aviso;
+        if (avisoVisible != null)
+            avisoVisible.SetActive(true);
     }
 }
