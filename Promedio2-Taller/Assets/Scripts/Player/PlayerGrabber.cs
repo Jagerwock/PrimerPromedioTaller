@@ -7,7 +7,7 @@ public class PlayerGrabber : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private Transform holdPoint;
     [Header("Configuración")]
-    [SerializeField] private KeyCode dropKey = KeyCode.G;
+    [SerializeField] private KeyCode dropKey = KeyCode.E;
     [SerializeField] private float dropForwardOffset = 0.6f;
     public Grabbable CurrentlyHeld { get; private set; }
     public bool IsCarrying => CurrentlyHeld != null;
